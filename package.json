@@ -1,6 +1,7 @@
 {
   "name": "storedashdistributor",
   "author": "Kolapo Babawale",
+  "url": "https://storedash-distributor.vercel.app",
   "version": "0.1.0",
   "private": true,
   "scripts": {
