@@ -6,8 +6,16 @@ import logo from '../../../../public/logo/logo.svg';
 import Input from "../../elements/Input/Input";
 import Button from "../../elements/Button/Button";
 import { ButtonType } from "../../../model/buttonType";
+import { PasswordAction } from "../../../model/PasswordAction";
 
-const ResetPassword = () => {
+type AppProps = {
+    type?: PasswordAction;
+    buttonText: string;
+    heading: string;
+    subHeading: string;
+}
+
+const Password = ({ buttonText, heading, subHeading, type = PasswordAction.RESETPASSWORD }: AppProps) => {
     return (
         <div className={`d-flex flex-column`}>
             <Header />
@@ -16,13 +24,14 @@ const ResetPassword = () => {
                 <span className={`fw-600 text-12`}>Storedash</span>
 
                 <form className={`d-flex flex-column w-30 mx-auto`}>
-                    <span className={`mt-5 fw-800 color-black text-15`}>Reset Password</span>
-                    <span className={`my-2 fw-400 text-11`}>Enter email to reset your password</span>
+                    <span className={`mt-5 fw-800 color-black text-15`}>{heading}</span>
+                    <span className={`my-2 fw-400 text-11`}>{subHeading}</span>
 
-                    <Input type="password" placeholder="Enter Password" />
-                    <Button textColor="white" label="Send reset link" type={ButtonType.PRIMARY} />
+                    <Input type="password" placeholder="Enter password" />
+                    {type === PasswordAction.SETNEWPASSWORD && <Input type="password" placeholder="Re-enter password" />}
+                    <Button textColor="white" label={buttonText} type={ButtonType.PRIMARY} />
 
-                    <Link href="/"><a className="mt-2">Back to login</a></Link>
+                    {type === PasswordAction.RESETPASSWORD && <Link href="/"><a className="mt-2">Back to login</a></Link>}
                 </form>
             </main>
             <Footer />
@@ -31,4 +40,4 @@ const ResetPassword = () => {
     )
 }
 
-export default ResetPassword;
+export default Password;

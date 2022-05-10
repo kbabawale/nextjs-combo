@@ -4,6 +4,7 @@ class CustomDocument extends Document {
     return = (): JSX.Element => (
         <Html>
             <Head>
+                <link rel="shortcut icon" href="/logo/logo.png" />
             </Head>
             <body>
                 <Main />

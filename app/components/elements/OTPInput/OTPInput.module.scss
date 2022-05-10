@@ -1,0 +1,21 @@
+.input {
+  margin: 0.5rem 0;
+  padding: 0.7rem 0.5rem;
+  border: 0.1rem solid #9ca3af;
+  outline: none;
+  border-radius: 0.2rem;
+  &:focus {
+    border: 0.1rem solid #000;
+  }
+  width: 20%;
+  height: 4rem;
+  text-align: center;
+  font-weight: 800;
+  font-size: 30px;
+}
+.invalid {
+  border: 0.15rem solid #e62121;
+}
+.valid {
+  border: 0.1rem solid #9ca3af;
+}

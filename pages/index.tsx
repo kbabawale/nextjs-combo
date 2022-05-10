@@ -3,9 +3,9 @@ import Login from '../app/components/templates/Login/Login';
 
 const Home: NextPage = () => {
   return (
-    <>
-      <Login />
-    </>
+
+    <Login />
+
   )
 }
 

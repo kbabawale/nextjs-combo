@@ -1,12 +1,11 @@
 import type { NextPage } from 'next'
-import Login from '../app/components/templates/Login/Login';
-import ResetPassword from '../app/components/templates/ResetPassword';
+import Password from '../app/components/templates/ResetPassword';
 
 const ResetPasswordPage: NextPage = () => {
     return (
-        <>
-            <ResetPassword />
-        </>
+
+        <Password heading='Reset Password' subHeading='Enter email to reset your password' buttonText='Send reset link' />
+
     )
 }
 
