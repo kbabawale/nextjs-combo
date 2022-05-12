@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import OTP from '../app/components/templates/OTP'
+import OTP from '../../app/components/templates/OTP'
 
 const OTPPage: NextPage = () => {
     return (

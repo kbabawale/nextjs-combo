@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Password from '../app/components/templates/ResetPassword';
+import Password from '../../app/components/templates/ResetPassword';
 
 const ResetPasswordPage: NextPage = () => {
     return (

@@ -18,7 +18,6 @@ type AppProps = {
 const Password = ({ buttonText, heading, subHeading, type = PasswordAction.RESETPASSWORD }: AppProps) => {
     return (
         <div className={`d-flex flex-column`}>
-            <Header />
             <main className={`mt-5 d-flex flex-column flex-fill justify-content-center align-items-center text-left`}>
                 <Image className="" src={logo} alt="Logo" />
                 <span className={`fw-600 text-12`}>Storedash</span>
@@ -34,8 +33,6 @@ const Password = ({ buttonText, heading, subHeading, type = PasswordAction.RESET
                     {type === PasswordAction.RESETPASSWORD && <Link href="/"><a className="mt-2">Back to login</a></Link>}
                 </form>
             </main>
-            <Footer />
-
         </div>
     )
 }

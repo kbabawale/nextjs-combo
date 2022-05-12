@@ -1,6 +1,6 @@
 import type { NextPage } from 'next'
-import Password from '../app/components/templates/ResetPassword';
-import { PasswordAction } from '../app/model/PasswordAction';
+import Password from '../../app/components/templates/ResetPassword';
+import { PasswordAction } from '../../app/model/PasswordAction';
 
 const SetNewPasswordPage: NextPage = () => {
     return (

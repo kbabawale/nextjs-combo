@@ -10,7 +10,6 @@ import { ButtonType } from "../../../model/buttonType";
 const Login = () => {
     return (
         <div className={`d-flex flex-column`}>
-            <Header />
             <main className={`mt-5 d-flex flex-column flex-fill justify-content-center align-items-center text-left`}>
                 <Image className="" src={logo} alt="Logo" />
                 <span className={`fw-600 text-12`}>Storedash</span>
@@ -23,10 +22,9 @@ const Login = () => {
                     <Input type="password" placeholder="Enter Password" />
                     <Button textColor="white" label="Log in" type={ButtonType.PRIMARY} />
 
-                    <Link href="/reset-password"><a className="mt-2">Forgot Password</a></Link>
+                    <Link href="/auth/reset-password"><a className="mt-2">Forgot Password</a></Link>
                 </form>
             </main>
-            <Footer />
 
         </div>
     )

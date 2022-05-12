@@ -1,0 +1,11 @@
+.linkborder {
+  border-left: 5px solid #800020;
+}
+.linkborderNone {
+  border-left: 5px solid #ffffff;
+}
+.link {
+  &:hover {
+    background: rgb(241, 241, 241);
+  }
+}

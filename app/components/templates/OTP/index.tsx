@@ -13,7 +13,6 @@ type AppProps = {
 const OTP = ({ heading, phoneNumber }: AppProps) => {
     return (
         <div className={`d-flex flex-column`}>
-            <Header />
             <main className={`mt-5 d-flex flex-column flex-fill justify-content-center align-items-center text-left`}>
                 <Image className="" src={logo} alt="Logo" />
                 <span className={`fw-600 text-12`}>Storedash</span>
@@ -33,8 +32,6 @@ const OTP = ({ heading, phoneNumber }: AppProps) => {
 
                 </form>
             </main>
-            <Footer />
-
         </div>
     )
 }

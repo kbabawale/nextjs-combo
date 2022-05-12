@@ -1,0 +1,58 @@
+.borderleft {
+  border: 0.5px solid #d1d5db;
+}
+
+.hline {
+  width: 0px;
+  height: 4rem;
+  border: 0.5px solid #e5e7eb;
+}
+
+.rounded {
+  border-radius: 1.2rem;
+  margin-left: auto;
+}
+.tabbox {
+  height: 400px;
+}
+.tabbox2 {
+  height: 350px;
+}
+.tabboxfullheight {
+  height: 460px;
+}
+.tabboxfullheight2 {
+  height: 428px;
+}
+.profile {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+}
+.dots {
+  width: 3px;
+  height: 3px;
+  background: white;
+  border-radius: 50%;
+}
+.box {
+  width: 20px;
+  height: 20px;
+  padding: 1rem;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  background: white;
+  border-radius: 1.2rem;
+}
+
+.profileimage {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: #ccc;
+}

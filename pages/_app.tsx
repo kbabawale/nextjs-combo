@@ -1,12 +1,30 @@
 import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-import 'bootstrap/dist/css/bootstrap.css'
+// import 'bootstrap/dist/css/bootstrap.css'
+import DefaultLayout from '../app/components/templates/DefaultLayout'
+import { useRouter } from 'next/router';
+import AuthLayout from '../app/components/templates/AuthLayout';
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { pathname } = useRouter();
+
+  let isAuthRoute = (): boolean => {
+    let res: boolean = false;
+    if (pathname.indexOf('auth') > -1) return true;
+    return res;
+  }
 
   return (
-
-    <Component {...pageProps} />
+    isAuthRoute() ? (
+      <AuthLayout>
+        <Component {...pageProps} />
+      </AuthLayout>
+    ) :
+      (
+        <DefaultLayout>
+          <Component {...pageProps} />
+        </DefaultLayout>
+      )
 
   )
 }
