@@ -10,6 +10,24 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCaretDown } from '@fortawesome/free-solid-svg-icons'
 import { useState } from 'react';
 import { nFormatter } from '../../../util/numberFormatter';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip as ChartTooltip,
+    Legend,
+} from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    ChartTooltip,
+    Legend
+);
 
 type Product = {
     id?: number;
@@ -33,6 +51,56 @@ const ProductCard = (obj: Product) => {
 
 const Dashboard = () => {
     const [selectedTab, setSelectedTab] = useState<string>('earnings');
+
+    const barChartData = {
+        labels: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'],
+        datasets: [
+            {
+                label: 'Product Sale',
+                backgroundColor: 'rgba(39, 110, 241, 1)',
+                borderColor: 'rgba(255,255,255,1)',
+                borderWidth: 2,
+                data: [65, 59, 80, 81, 56, 80, 81]
+            },
+            {
+                label: 'Delivery Sale',
+                backgroundColor: 'rgba(243, 244, 246, 1)',
+                borderColor: 'rgba(255,255,255,1)',
+                borderWidth: 2,
+                data: [65, 59, 80, 81, 56, 80, 81]
+            }
+        ]
+    }
+
+    const barChartOptions = {
+        plugins: {
+            legend: {
+                display: false
+            },
+            title: {
+                display: false,
+                text: 'Bar Chart - Stacked',
+            },
+        },
+        responsive: true,
+        interaction: {
+            mode: 'index' as const,
+            intersect: false,
+        },
+        maintainAspectRatio: false,
+        scales: {
+            x: {
+                stacked: true,
+                grid: {
+                    display: false
+                }
+            },
+            y: {
+                stacked: true,
+
+            },
+        }
+    };
 
     const products: Product[] = [
         {
@@ -149,8 +217,15 @@ const Dashboard = () => {
                                     <FontAwesomeIcon icon={faCaretDown} />
                                 </div>
                             </div>
-                            <div id='earnings' className={`${styles.tabbox} ${selectedTab === 'earnings' ? 'd-block' : 'd-none'} p-3`}>
-                                <span>Earnings</span>
+                            <div id='earnings' className={`${styles.tabbox} d-flex flex-column ${selectedTab === 'earnings' ? 'd-block' : 'd-none'} p-3`}>
+                                <span className={`text-12 fw-700`}>₦4,542,768.89</span>
+                                <span className={`color-gray-500 text-09`}>Earnings includes product sale and delivery fees</span>
+                                <div className={`${styles.barchart} mt-3`}>
+                                    <Bar
+                                        data={barChartData}
+                                        options={barChartOptions}
+                                    />
+                                </div>
                             </div>
                             <div id='productsales' className={`${styles.tabbox} ${selectedTab === 'productSales' ? 'd-block' : 'd-none'} p-3`}>
                                 <span>Product Sales</span>
