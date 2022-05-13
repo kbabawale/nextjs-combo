@@ -9,3 +9,19 @@
     background: rgb(241, 241, 241);
   }
 }
+.badge {
+  color: white;
+  background: rgba(255, 72, 72, 1);
+  padding: 0.05rem 0.8rem;
+  border-radius: 12px;
+}
+.hazardIcon {
+  color: white;
+  background: rgba(255, 72, 72, 1);
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

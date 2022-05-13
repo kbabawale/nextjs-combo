@@ -1,13 +1,23 @@
+export enum ExtraIconType {
+    BADGE = "BADGE",
+    HAZARD = "HAZARD"
+}
+
+export type ExtraIcon = {
+    active: boolean;
+    type: ExtraIconType;
+    value?: number;
+}
 export interface SideMenuItem {
     unfilledIcon: string;
     filledIcon: string;
     url: string;
     label: string;
-    active?: boolean;
+    extraIcon?: ExtraIcon;
     id: number;
 }
 
-export const SideMenuItems: SideMenuItem[] = [
+export let SideMenuItems: SideMenuItem[] = [
     {
         id: 1,
         label: 'Dashboard',
@@ -20,14 +30,23 @@ export const SideMenuItems: SideMenuItem[] = [
         label: 'Products',
         url: '/products',
         filledIcon: 'ProductsFilled',
-        unfilledIcon: 'ProductsUnfilled'
+        unfilledIcon: 'ProductsUnfilled',
+        extraIcon: {
+            active: true,
+            type: ExtraIconType.HAZARD
+        }
     },
     {
         id: 3,
         label: 'Orders',
         url: '/orders',
         filledIcon: 'OrdersFilled',
-        unfilledIcon: 'OrdersUnfilled'
+        unfilledIcon: 'OrdersUnfilled',
+        extraIcon: {
+            active: true,
+            type: ExtraIconType.BADGE,
+            value: 99
+        }
     },
     {
         id: 4,
