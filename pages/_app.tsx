@@ -1,6 +1,5 @@
 import '../styles/globals.scss'
 import type { AppProps } from 'next/app'
-// import 'bootstrap/dist/css/bootstrap.css'
 import DefaultLayout from '../app/components/templates/DefaultLayout'
 import { useRouter } from 'next/router';
 import AuthLayout from '../app/components/templates/AuthLayout';
