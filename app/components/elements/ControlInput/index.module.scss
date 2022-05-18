@@ -1,0 +1,28 @@
+.input {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  width: 20rem;
+  outline: none;
+  height: 3rem;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+
+  &:focus {
+    border: 1px solid #a6a9ad;
+  }
+}
+.wideinput {
+  margin: 0.5rem 0;
+  padding: 0.5rem 1rem;
+  width: 100%;
+  outline: none;
+  height: 3rem;
+  background: #f9fafb;
+  border: 1px solid #d1d5db;
+  border-radius: 2px;
+
+  &:focus {
+    border: 1px solid #a6a9ad;
+  }
+}
