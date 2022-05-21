@@ -38,9 +38,10 @@ const ProductCard = ({ name, image, stockCount, price }: ProductType) => {
         document.body.style.overflow = 'unset';
     }
 
-    const toggleModal = (options?: any) => {
+    const toggleModal = () => {
         setIsOpen(!isOpen);
         //set other modal options
+
     }
 
     return (
@@ -162,7 +163,7 @@ const Products = () => {
                                     <div className={``}><ControlButton type={ControlButtonType.SECONDARY} label='Save changes' /></div>
                                 </div>
 
-                                <Modal type={ModalType.UPLOADPRODUCT} position={modalPosition} onRequestClose={toggleModal} onAfterClose={afterCloseModal} afterOpenModal={afterOpenModal} modalIsOpen={isOpen} />
+                                <Modal hideModal={() => setIsOpen(false)} type={ModalType.UPLOADPRODUCT} position={modalPosition} onRequestClose={toggleModal} onAfterClose={afterCloseModal} afterOpenModal={afterOpenModal} modalIsOpen={isOpen} />
 
                             </div>
 

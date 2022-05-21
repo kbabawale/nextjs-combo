@@ -20,9 +20,10 @@ type AppProps = {
     onRequestClose?: () => void;
     onAfterClose?: () => void;
     shouldCloseOnOverlayClick?: boolean;
+    hideModal?: () => void;
 }
 
-const Modal = ({ modalIsOpen, type, afterOpenModal, onAfterClose, onRequestClose, position = ModalPosition.CENTER, shouldCloseOnOverlayClick = true }: AppProps) => {
+const Modal = ({ modalIsOpen, type, hideModal, afterOpenModal, onAfterClose, onRequestClose, position = ModalPosition.CENTER, shouldCloseOnOverlayClick = true }: AppProps) => {
     let rightcontent = {
         overlay: {
             position: 'fixed',
@@ -107,7 +108,7 @@ const Modal = ({ modalIsOpen, type, afterOpenModal, onAfterClose, onRequestClose
                     <div className={`mt-5 w-100 d-flex justify-content-between`}>
                         <Button wide={true} label='Upload' type={ButtonType.PRIMARY} />
                         <span className='mx-1'></span>
-                        <Button wide={true} label='Cancel' textColor='red' type={ButtonType.SECONDARY} />
+                        <Button click={() => { hideModal?.() }} wide={true} label='Cancel' textColor='red' type={ButtonType.SECONDARY} />
                     </div>
                 </div>
             }
