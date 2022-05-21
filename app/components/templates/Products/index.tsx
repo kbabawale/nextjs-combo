@@ -1,7 +1,5 @@
 import AuthSideMenu from '../../layouts/AuthSideMenu/AuthSideMenu';
 import styles from './index.module.scss';
-import Link from 'next/link'
-import Image from 'next/image'
 import { useState } from 'react';
 import Alert from '../../elements/Alert/Alert';
 import { AlertType } from '../../../model/AlertType';

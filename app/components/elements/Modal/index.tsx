@@ -2,7 +2,6 @@ import Link from 'next/link';
 import ReactModal from 'react-modal';
 import { ButtonType, ControlButtonType } from '../../../model/buttonType';
 import { ModalPosition, ModalType } from '../../../model/Modal';
-import ModalUpdateProduct from '../../templates/Modals/UpdateProduct';
 import Button from '../Button/Button';
 import ControlButton from '../ControlButton';
 import ControlDate from '../ControlDate';
