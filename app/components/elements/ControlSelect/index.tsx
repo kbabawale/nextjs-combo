@@ -6,14 +6,15 @@ export type ControlSelectType = {
         value: any;
         default?: boolean;
     }[];
+    default?: any;
     wide?: boolean;
 }
 
 const ControlSelect = ({ options, wide = false }: ControlSelectType) => {
     return (
-        <select className={`${wide ? styles.wideinput : styles.input}`}>
-            {options.map(x => (
-                <option selected={x.default} value={x.value}>{x.label}</option>
+        <select defaultValue='' className={`${wide ? styles.wideinput : styles.input}`}>
+            {options.map((x, i) => (
+                <option key={i} value={x.value}>{x.label}</option>
             ))}
         </select>
     )

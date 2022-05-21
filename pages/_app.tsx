@@ -3,6 +3,8 @@ import type { AppProps } from 'next/app'
 import DefaultLayout from '../app/components/templates/DefaultLayout'
 import { useRouter } from 'next/router';
 import AuthLayout from '../app/components/templates/AuthLayout';
+import { Provider } from "react-redux";
+import { store } from "../app/store";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { pathname } = useRouter();
@@ -15,14 +17,18 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     isAuthRoute() ? (
-      <AuthLayout>
-        <Component {...pageProps} />
-      </AuthLayout>
+      <Provider store={store}>
+        <AuthLayout>
+          <Component {...pageProps} />
+        </AuthLayout>
+      </Provider>
     ) :
       (
-        <DefaultLayout>
-          <Component {...pageProps} />
-        </DefaultLayout>
+        <Provider store={store}>
+          <DefaultLayout>
+            <Component {...pageProps} />
+          </DefaultLayout>
+        </Provider>
       )
 
   )

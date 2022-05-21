@@ -11,18 +11,19 @@ type AppProps = {
     icon?: IconDefinition;
     style?: any;
     disabled?: boolean;
+    click?: () => void;
 }
 
 
 
-const ControlButton = ({ label, icon, type = ControlButtonType.PRIMARY, textColor = 'white', disabled = false }: AppProps) => {
+const ControlButton = ({ label, click, icon, type = ControlButtonType.PRIMARY, textColor = 'white', disabled = false }: AppProps) => {
 
 
     return (
         <>
             {
                 type === ControlButtonType.PRIMARY &&
-                <button disabled={disabled} style={{ color: textColor }} className={`${styles.primary} hover link`} type="button">
+                <button onClick={click} disabled={disabled} style={{ color: textColor }} className={`${styles.primary} hover link`} type="button">
                     <div>
                         {icon && <FontAwesomeIcon icon={icon} />}
                         <span className={`text-09 ms-2`}>{label}</span>

@@ -12,7 +12,9 @@ import { faAdd } from '@fortawesome/free-solid-svg-icons'
 import { ControlButtonType } from '../../../model/buttonType';
 import Modal from '../../elements/Modal';
 import { ModalPosition, ModalType } from '../../../model/Modal';
-
+// import { useDispatch, useSelector } from "react-redux";
+// import { bindActionCreators } from 'redux';
+// import { modalActionCreators, State } from '../../../store';
 
 type ProductType = {
     image: string;
@@ -22,19 +24,23 @@ type ProductType = {
 }
 
 const ProductCard = ({ name, image, stockCount, price }: ProductType) => {
+    // const dispatch = useDispatch();
+    // const { toggleModal } = bindActionCreators(modalActionCreators, dispatch);
+    // const modalState = useSelector((state: State) => state.modal);
+
     let [isOpen, setIsOpen] = useState(false);
     let [modalPosition, setModalPosition] = useState(ModalPosition.RIGHT);
-
-    const toggleModal = (options?: any) => {
-        setIsOpen(!isOpen);
-        //set other modal options
-    }
 
     const afterOpenModal = () => {
         document.body.style.overflow = 'hidden';
     }
     const afterCloseModal = () => {
         document.body.style.overflow = 'unset';
+    }
+
+    const toggleModal = (options?: any) => {
+        setIsOpen(!isOpen);
+        //set other modal options
     }
 
     return (
@@ -96,8 +102,24 @@ const ProductList = ({ title }: any) => {
 
 const Products = () => {
     const [selectedTab, setSelectedTab] = useState<string>('all');
+
+    let [isOpen, setIsOpen] = useState(false);
+    let [modalPosition, setModalPosition] = useState(ModalPosition.CENTER);
+
+    const toggleModal = (options?: any) => {
+        setIsOpen(!isOpen);
+        //set other modal options
+    }
+
+    const afterOpenModal = () => {
+        document.body.style.overflow = 'hidden';
+    }
+    const afterCloseModal = () => {
+        document.body.style.overflow = 'unset';
+    }
+
     let productlink: { url: string, label: string } = {
-        url: '',
+        url: '/',
         label: 'View Products'
     }
     let dropdownOptions: ControlSelectType = {
@@ -136,9 +158,11 @@ const Products = () => {
                                 </div>
 
                                 <div className={`d-flex align-items-center`}>
-                                    <div className={`me-4`}><ControlButton textColor='white' type={ControlButtonType.PRIMARY} label='Add New Item' icon={faAdd} /></div>
+                                    <div className={`me-4`}><ControlButton click={toggleModal} textColor='white' type={ControlButtonType.PRIMARY} label='Add New Item' icon={faAdd} /></div>
                                     <div className={``}><ControlButton type={ControlButtonType.SECONDARY} label='Save changes' /></div>
                                 </div>
+
+                                <Modal type={ModalType.UPLOADPRODUCT} position={modalPosition} onRequestClose={toggleModal} onAfterClose={afterCloseModal} afterOpenModal={afterOpenModal} modalIsOpen={isOpen} />
 
                             </div>
 
