@@ -286,7 +286,7 @@ export default function NewOrderDataTable() {
                         />
                         <TableBody>
 
-                            {stableSort(rows, getComparator(order, orderBy))
+                            {rows.sort()
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
                                     const isItemSelected = isSelected(row.customerName.toString());
