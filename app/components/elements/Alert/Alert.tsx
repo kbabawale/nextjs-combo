@@ -9,7 +9,7 @@ type AppProps = {
     label: string;
     title: string;
     type?: AlertType;
-    link: {
+    link?: {
         url: string;
         label: string;
     };
@@ -25,7 +25,7 @@ const Alert = ({ title, label, link, type = AlertType.DANGER }: AppProps) => {
                 <span className={`ms-2 fw-800`}>{title}:</span>
                 <span className={`ms-2`}>{label}</span>
 
-                <Link href={`${link.url}`}><a className={`${styles.farright} color-safety-blue text-decoration-underline`}>{link.label}</a></Link>
+                <Link href={`${link?.url}`}><a className={`${styles.farright} color-safety-blue text-decoration-underline`}>{link?.label}</a></Link>
             </div>
 
             :
@@ -36,7 +36,7 @@ const Alert = ({ title, label, link, type = AlertType.DANGER }: AppProps) => {
                 <span className={`ms-2 fw-800`}>{title}:</span>
                 <span className={`ms-2`}>{label}</span>
 
-                <Link href={`${link.url}`}><a className={`${styles.farright} color-safety-blue text-decoration-underline`}>{link.label}</a></Link>
+                <Link href={`${link?.url}`}><a className={`${styles.farright} color-safety-blue text-decoration-underline`}>{link?.label}</a></Link>
             </div>
     )
 }

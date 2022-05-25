@@ -9,7 +9,7 @@ $theme-colors: (
   // 'warning': #ffbe0b,
   // 'danger': #ff007f,
   // 'light': #c0ccda,
-  // 'dark': #001738,,,,
+  // 'dark': #001738,,,,,
 );
 
 @import '/node_modules/bootstrap/scss/bootstrap.scss';
@@ -74,6 +74,9 @@ a {
 .error {
   color: var(--error);
 }
+.color-chip-accent{
+  color:#EAF3F6;
+}
 
 // Background
 .bg,
@@ -109,6 +112,9 @@ a {
 }
 .bg-safety-blue {
   background: var(--safety-blue);
+}
+.bg-lime-yellow {
+  background: #fdfd99;
 }
 
 //Font-size

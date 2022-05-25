@@ -13,7 +13,7 @@ type AppProps = {
 
 const Button = ({ label, click, type = ButtonType.PRIMARY, textColor = 'white', wide = false }: AppProps) => {
     return (
-        type === ButtonType.PRIMARY ? <button onClick={click} style={{ color: textColor }} className={`${wide ? styles.wide : ''} ${styles.primary} hover`} type="button">{label}</button> : <button onClick={click} style={{ color: textColor }} className={`${wide ? styles.wide : ''} ${styles.secondary} hover`} type="button">{label}</button>
+        type === ButtonType.PRIMARY ? <button onClick={click} style={{ color: textColor }} className={`${wide ? styles.wide : ''} ${styles.primary} hover`} type="button">{label}</button> : <button onClick={click} style={{ color: textColor, border: '1px solid #D1D5DB' }} className={`${wide ? styles.wide : ''} ${styles.secondary} hover`} type="button">{label}</button>
     )
 }
 

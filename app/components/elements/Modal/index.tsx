@@ -10,6 +10,10 @@ import ControlSelect, { ControlSelectType } from '../ControlSelect';
 import ControlTextArea from '../ControlTextArea';
 import UploadControl from '../UploadControl';
 import styles from './index.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClose, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import Alert from '../Alert/Alert';
+import { AlertType } from '../../../model/AlertType';
 
 type AppProps = {
     type: ModalType;
@@ -20,9 +24,10 @@ type AppProps = {
     onAfterClose?: () => void;
     shouldCloseOnOverlayClick?: boolean;
     hideModal?: () => void;
+    toggleModalView?: () => void;
 }
 
-const Modal = ({ modalIsOpen, type, hideModal, afterOpenModal, onAfterClose, onRequestClose, position = ModalPosition.CENTER, shouldCloseOnOverlayClick = true }: AppProps) => {
+const Modal = ({ modalIsOpen, type, hideModal, toggleModalView, afterOpenModal, onAfterClose, onRequestClose, position = ModalPosition.CENTER, shouldCloseOnOverlayClick = true }: AppProps) => {
     let rightcontent = {
         overlay: {
             position: 'fixed',
@@ -58,7 +63,8 @@ const Modal = ({ modalIsOpen, type, hideModal, afterOpenModal, onAfterClose, onR
             marginRight: '-50%',
             transform: 'translate(-50%, -50%)',
             border: 'none',
-            width: '40%'
+            width: '50%',
+            maxHeight: '70vh'
         }
 
     }
@@ -193,6 +199,116 @@ const Modal = ({ modalIsOpen, type, hideModal, afterOpenModal, onAfterClose, onR
                             <span className="fw-800">Unpublish:</span>
                             <span className="ms-2">Mark Product as out of stock to send to unpublished list </span>
                         </div>
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.ORDERDETAILS &&
+                <div className={`d-flex flex-column align-items-center`}>
+                    <div className={`w-100 px-3 pb-3 d-flex align-items-center justify-content-between border-bottom border-secondary`}>
+                        <div className={`d-flex flex-column`}>
+                            <span className={`fw-800 text-12`}>Order Details</span>
+                            <span className={`color-gray-700`}>View customer information and order details</span>
+                        </div>
+                        <span className={`align-self-start link hover`} onClick={() => { hideModal?.() }}><FontAwesomeIcon color='black' icon={faClose} /></span>
+                    </div>
+                    <div className={`px-3 d-flex align-items-center justify-content-between mt-4 w-100`}>
+                        <div className={`d-flex align-items-center`}>
+                            <div style={{ width: '50px', height: '50px', borderRadius: '50%', backgroundColor: 'red' }}></div>
+                            <div className={`ms-2 d-flex flex-column`}>
+                                <span className={`fw-700 text-11`}>Jenny Drink Stores</span>
+                                <div className={`d-flex align-items-center`}>
+                                    <span className={`color-gray-600`}>Over an hour ago</span>
+                                    <div className={`bg-error px-2 py-1 rounded ms-2`}>
+                                        <FontAwesomeIcon color="white" icon={faExclamationTriangle} />
+                                        <span className={`ms-1 color-white text-09 fw-600`}>Urgent</span>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className={`d-flex align-items-center`}>
+                            <div className={`${styles.pinbox} mx-1`}>3</div>
+                            <div className={`${styles.pinbox} mx-1`}>3</div>
+                            <div className={`${styles.pinbox} mx-1`}>3</div>
+                            <div className={`${styles.pinbox} mx-1`}>3</div>
+                        </div>
+
+                    </div>
+
+                    <div className={`px-3 w-100 mt-3`}>
+                        <Alert title='Delayed Orders' label=' StoreDash recommends orders are processed within 30mins.' type={AlertType.DANGER} />
+                    </div>
+
+                    <div className={`px-3 d-flex flex-column w-100 mt-4`}>
+                        <span className={`fw-800 text-11`}>Order details</span>
+
+                        <div className={`d-flex my-3 align-items-center`}>
+                            <div className={`w-30 d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Order number</span>
+                                <span className={`text-11`}>AX7352-863</span>
+                            </div>
+                            <div className={`d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Amount</span>
+                                <span className={`text-11`}>₦283,500.00 (Card Payment)</span>
+                            </div>
+                        </div>
+                        <div className={`d-flex my-3 align-items-center`}>
+                            <div className={`w-30 d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Customer</span>
+                                <span className={`text-11`}>Jenny Drink Stores</span>
+                            </div>
+                            <div className={`d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Date/Time</span>
+                                <span className={`text-11`}>Mar 4, 2022, 02:14 PM</span>
+                            </div>
+                        </div>
+                        <div className={`d-flex my-3 align-items-center`}>
+                            <div className={`w-70 d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Drop-off location</span>
+                                <span className={`text-11`}>A.G Leventis building Iddo House, Herbert Macaulay Way, Lagos Mainland 101245, Lagos</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={`px-3 d-flex flex-column w-100 mt-4`}>
+                        <span className={`fw-800 text-11 mb-3`}>Items</span>
+
+                        {Array.from(Array(5).keys()).map((x, index) => (
+                            <div key={index} className={`mb-5 d-flex align-items-center`}>
+                                <span className={`w-05`}>3x</span>
+                                <div className={`rounded bg-lime-yellow`} style={{ width: '60px', height: '60px' }}></div>
+                                <div className={`ms-3 d-flex flex-column`}>
+                                    <span className={`fw-500 text-11`}>Coca-cola Coke Can Drink (X24 pack)</span>
+                                    <span className={`fw-700 color-gray-600`}>₦4,500.00</span>
+                                </div>
+                            </div>
+                        ))
+
+                        }
+                    </div>
+
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <Button click={() => { toggleModalView?.() }} wide={true} label='Ready for pickup' type={ButtonType.PRIMARY} />
+                        <span className='mx-1'></span>
+                        <Button click={() => { hideModal?.() }} wide={true} label='Report a problem' textColor='black' type={ButtonType.SECONDARY} />
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.CONFIRMPICKUP &&
+                <div className={`d-flex flex-column align-items-center px-3 ${styles.overflow}`}>
+                    <span className={`fw-700 text-11`}>Confirm pick-up</span>
+                    <div className='mt-5'>
+                        <span>
+                            Please confirm that the ordered items have been packaged and labelled properly and is ready for pick up when the driver arrives. Be sure to authenticate the pickup with the 4-digit PIN.
+                        </span>
+                    </div>
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <Button click={() => { toggleModalView?.(); hideModal?.() }} wide={true} label='Yes confirm' type={ButtonType.PRIMARY} />
+                        <span className='mx-1'></span>
+                        <Button click={() => { toggleModalView?.(); hideModal?.() }} wide={true} label='Cancel' textColor='red' type={ButtonType.SECONDARY} />
                     </div>
                 </div>
             }
