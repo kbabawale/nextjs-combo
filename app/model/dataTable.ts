@@ -27,6 +27,28 @@ export interface ProcessedOrderData {
     pin: string;
     blank: any;
 }
+export interface PickUpDeliveryData {
+    driverName: string;
+    driverProfileImage: string;
+    orderNumber: number;
+    numberPlate: string;
+    vehicle: string;
+    dateCreated: Date;
+    pin: string;
+    blank: any;
+}
+
+export interface DropOffDeliveryData {
+    driverName: string;
+    driverProfileImage: string;
+    orderNumber: number;
+    numberPlate: string;
+    vehicle: string;
+    dateCreated: Date;
+    status: string; //should be enum
+    type: string; //should be enum
+    blank: any;
+}
 
 export interface HeadCell<T> {
     disablePadding: boolean;
