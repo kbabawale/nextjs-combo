@@ -5,8 +5,8 @@ export interface Customer {
 }
 
 export enum PaymentType {
-    CARD_PAYMENT = "CARD_PAYMENT",
-    CASH_PAYMENT = "CASH_PAYMENT"
+    CARD_PAYMENT = "CARD PAYMENT",
+    CASH_PAYMENT = "CASH PAYMENT"
 }
 export interface Data {
     customerName: string;
@@ -35,6 +35,14 @@ export interface PickUpDeliveryData {
     vehicle: string;
     dateCreated: Date;
     pin: string;
+    blank: any;
+}
+export interface PaymentData {
+    paidTo: string;
+    amount: number;
+    description: string;
+    status: string;
+    dateCreated: Date;
     blank: any;
 }
 

@@ -312,6 +312,41 @@ const Modal = ({ modalIsOpen, type, hideModal, toggleModalView, afterOpenModal, 
                     </div>
                 </div>
             }
+            {
+                type === ModalType.UPDATEBILLING &&
+                <div className={`d-flex flex-column align-items-center px-3 ${styles.overflow}`}>
+                    <span className={`align-self-start fw-800 text-17`}>Update Billing info</span>
+                    <span className={`align-self-start mt-1 color-gray-700`}>You can update you banking information and invoice email</span>
+
+                    <div className={`w-100 mt-3 d-flex flex-column`}>
+                        <span className={`fw-400 text-11`}>Bank</span>
+                        <ControlSelect options={dropdownOptions.options} wide={true} />
+                    </div>
+                    <div className={`w-100 mt-5 d-flex flex-column`}>
+                        <span className={`fw-400 text-11`}>Account number</span>
+                        <ControlInput placeholder="123456789" wide={true} />
+                    </div>
+                    <div className={`w-100 mt-5 d-flex flex-column`}>
+                        <span className={`fw-400 text-11`}>Account name</span>
+                        <ControlInput placeholder="Acme Distributions" wide={true} />
+                    </div>
+                    <div className={`w-100 mt-5 d-flex flex-column`}>
+                        <span className={`fw-400 text-11`}>Invoice email</span>
+                        <ControlInput type='email' placeholder="joshAkanji@company.com" wide={true} />
+                    </div>
+                    <span className={`align-self-start color-gray-600`}>Invoices are sent to this email 3 days to the due billing date</span>
+
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <div className={`flex-fill`}>&nbsp;</div>
+                        <div className={`w-30 d-flex justify-content-between`}>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Save' type={ButtonType.PRIMARY} />
+                            <span className='mx-1'></span>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Cancel' textColor='red' type={ButtonType.SECONDARY} />
+                        </div>
+
+                    </div>
+                </div>
+            }
 
 
         </ReactModal>
