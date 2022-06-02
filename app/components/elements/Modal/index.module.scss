@@ -11,6 +11,9 @@
 .UpdateProductdangerBG {
   background: rgba(255, 0, 0, 0.09);
 }
+.AddVehicleinfoBG {
+  background: #FDFED1;
+}
 
 .pinbox{
   width:30px;
@@ -21,4 +24,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.dashedBorder{
+  border:dashed 1px #9CA3AF;
 }

@@ -45,6 +45,15 @@ export interface PaymentData {
     dateCreated: Date;
     blank: any;
 }
+export interface StaffData {
+    name: string;
+    email: string;
+    phoneNumber: string;//and area code
+    trip: string;
+    role: string;
+    activity: string;
+    blank: any;
+}
 
 export interface DropOffDeliveryData {
     driverName: string;
@@ -55,6 +64,15 @@ export interface DropOffDeliveryData {
     dateCreated: Date;
     status: string; //should be enum
     type: string; //should be enum
+    blank: any;
+}
+export interface VehicleDeliveryData {
+    model: string;
+    color: string;
+    year: number;
+    VIN: string;
+    registration: string;
+    status: string; //should be enum
     blank: any;
 }
 

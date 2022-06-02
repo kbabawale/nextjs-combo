@@ -11,9 +11,10 @@ import ControlTextArea from '../ControlTextArea';
 import UploadControl from '../UploadControl';
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { faClose, faCloudDownload, faCloudDownloadAlt, faExclamationTriangle, faFileAlt } from '@fortawesome/free-solid-svg-icons'
 import Alert from '../Alert/Alert';
 import { AlertType } from '../../../model/AlertType';
+import { Carousel } from 'react-bootstrap';
 
 type AppProps = {
     type: ModalType;
@@ -25,6 +26,55 @@ type AppProps = {
     shouldCloseOnOverlayClick?: boolean;
     hideModal?: () => void;
     toggleModalView?: () => void;
+}
+type VehicleRegProps = {
+    title: string;
+}
+type VehicleDocumentProps = {
+    title: string;
+    filesize: number;
+    expired?: boolean;
+}
+
+const VehicleRegComponent = ({ title }: VehicleRegProps) => {
+    return (
+        <div className={`my-4 d-flex align-items-center justify-content-between`}>
+            <div className={`w-40 d-flex flex-column`}>
+                <span className={`fw-800 text-12`}>{title}</span>
+                <div className={`mt-3 d-flex align-items-center justify-content-between`}>
+                    <div className={`me-1 d-flex flex-column`}>
+                        <span className={`fw-500 text-11`}>Issue Date</span>
+                        <ControlDate />
+                    </div>
+                    <div className={`ms-1 d-flex flex-column`}>
+                        <span className={`fw-500 text-11`}>Expiry Date</span>
+                        <ControlDate />
+                    </div>
+                </div>
+            </div>
+            <div className={`w-30 d-flex flex-column align-items-center rounded p-3 ${styles.dashedBorder}`}>
+                <span className={`color-gray-400 text-09`}>Drag &amp; Drop to upload</span>
+                <span className={`color-gray-400 text-11`}>Or</span>
+                <ControlButton textColor='white' type={ControlButtonType.PRIMARY} label='Browse File' />
+            </div>
+        </div>
+    )
+}
+const VehicleDocumentComponent = ({ title, filesize, expired = false }: VehicleDocumentProps) => {
+    return (
+        <div className={`d-flex flex-column me-3 mb-1 w-40`}>
+            <div className={`border border-secondary rounded p-2 d-flex justify-content-between align-items-center`}>
+                <FontAwesomeIcon color='#276EF1B2' size='2x' icon={faFileAlt} />
+                <div className={`ms-3 d-flex flex-column`}>
+                    <span className={`fw-600 text-09`}>{title}</span>
+                    <span className={`fw-500 text-09 color-gray-600`}>{filesize}MB</span>
+                </div>
+                <FontAwesomeIcon className={`hover link`} size='lg' icon={faCloudDownload} />
+            </div>
+            <span className={`${expired ? 'error fw-800 text-09' : 'color-white'}`}>{expired ? 'Expired' : 'Not'}</span>
+
+        </div>
+    )
 }
 
 const Modal = ({ modalIsOpen, type, hideModal, toggleModalView, afterOpenModal, onAfterClose, onRequestClose, position = ModalPosition.CENTER, shouldCloseOnOverlayClick = true }: AppProps) => {
@@ -344,6 +394,164 @@ const Modal = ({ modalIsOpen, type, hideModal, toggleModalView, afterOpenModal, 
                             <Button click={() => { hideModal?.() }} wide={true} label='Cancel' textColor='red' type={ButtonType.SECONDARY} />
                         </div>
 
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.ADDVEHICLE &&
+                <div className={`d-flex flex-column px-3 ${styles.overflow}`}>
+                    <div className={`mt-3 d-flex align-items-center justify-content-between`}>
+                        <span className={`fw-700 text-15`}>Add Vehicle</span>
+                        <ControlButton disabled={true} label="Save changes" type={ControlButtonType.PRIMARY} />
+                    </div>
+                    <div className={`mt-5 d-flex align-items-center justify-content-between`}>
+                        <span className={`align-self-start fw-600 text-11`}>Vehicle</span>
+                        <div className={`w-60 d-flex flex-column`}>
+                            <div className={`d-flex align-items-center justify-content-between`}>
+                                <ControlSelect options={dropdownOptions.options} />
+                                <span className='mx-1'></span>
+                                <ControlSelect options={dropdownOptions.options} />
+                            </div>
+                            <div className={`d-flex align-items-center justify-content-between`}>
+                                <ControlSelect options={dropdownOptions.options} />
+                                <span className='mx-1'></span>
+                                <ControlSelect options={dropdownOptions.options} />
+                            </div>
+                        </div>
+                    </div>
+                    <div className={`mt-5 d-flex flex-column`}>
+                        <div className={`d-flex align-items-center justify-content-between`}>
+                            <span className={`fw-400 text-11`}>Notes</span>
+                            <span className={`fw-500 color-gray-700`}>0/400</span>
+                        </div>
+                        <ControlTextArea placeholder="Some description about the the vehicle e.g dents, custom colour (optional)" wide={true} />
+                    </div>
+                    <div className={`mt-5 d-flex flex-column`}>
+                        <span className={`fw-400 text-11`}>Photos (Add up to 8 photos)</span>
+                        <div className={`mt-3 d-flex justify-content-between align-items-center flex-wrap`}>
+                            <UploadControl />
+                            <UploadControl />
+                            <UploadControl />
+                            <UploadControl />
+                            <div className="w-100"></div>
+                            <UploadControl />
+                            <UploadControl />
+                            <UploadControl />
+                            <UploadControl />
+                        </div>
+                    </div>
+                    <hr />
+
+                    <VehicleRegComponent title='Vehicle Registration' />
+                    <VehicleRegComponent title='Driver’s License' />
+                    <VehicleRegComponent title='Vehicle Insurance ' />
+                    <VehicleRegComponent title='Commercial vehicle' />
+                    <VehicleRegComponent title='VIO Permit' />
+
+                    <div className={`${styles.AddVehicleinfoBG} mb-5 p-2 mt-5 d-flex  align-items-center`}>
+                        <input type="checkbox" />
+                        <div className="ms-3">
+                            <span className="fw-800">Unlisted:</span>
+                            <span className="ms-2">Mark vehicle as unlisted if this vehicle is out of commission or requires service</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.VEHICLEDETAILS &&
+                <div className={`d-flex flex-column align-items-center`}>
+                    <div className={`w-100 px-3 pb-3 d-flex align-items-center justify-content-between border-bottom border-secondary`}>
+                        <div className={`d-flex flex-column`}>
+                            <span className={`fw-800 text-12`}>Vehicle Information</span>
+                            <span className={`color-gray-700`}>View vehicle information and see delivery history</span>
+                        </div>
+                        <span className={`align-self-start link hover`} onClick={() => { hideModal?.() }}><FontAwesomeIcon color='black' icon={faClose} /></span>
+                    </div>
+
+                    <div className={`w-100 mt-3`}>
+                        <Carousel>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="vehicle.svg"
+                                    alt="First slide"
+                                />
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="vehicle.svg"
+                                    alt="Second slide"
+                                />
+
+
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                <img
+                                    className="d-block w-100"
+                                    src="vehicle.svg"
+                                    alt="Third slide"
+                                />
+
+                            </Carousel.Item>
+                        </Carousel>
+                    </div>
+
+
+                    <div className={`px-3 d-flex flex-column w-100 mt-4`}>
+                        <span className={`fw-800 text-11`}>Overview</span>
+
+                        <div className={`d-flex my-3 align-items-center`}>
+                            <div className={`w-30 d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Model</span>
+                                <span className={`text-11`}>Ford, Transit</span>
+                            </div>
+                            <div className={`d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Color</span>
+                                <span className={`text-11`}>White</span>
+                            </div>
+                        </div>
+                        <div className={`d-flex my-3 align-items-center`}>
+                            <div className={`w-30 d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Year</span>
+                                <span className={`text-11`}>2013</span>
+                            </div>
+                            <div className={`d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>VIN</span>
+                                <span className={`text-11`}>4Y1SL65848Z411439</span>
+                            </div>
+                        </div>
+                        <div className={`d-flex my-3 align-items-center`}>
+                            <div className={`w-70 d-flex flex-column`}>
+                                <span className={`color-gray-600 text-09`}>Registration</span>
+                                <span className={`text-11`}>AG90KKY</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className={`px-3 d-flex flex-column w-100 mt-4`}>
+                        <span className={`fw-800 text-11`}>Documents</span>
+
+                        <div className={`mt-3 d-flex flex-wrap align-items-center`}>
+                            <VehicleDocumentComponent title="Vehicle Registration" filesize={1.84} />
+                            <VehicleDocumentComponent title="VIO Permit" filesize={1.84} />
+                            <VehicleDocumentComponent title="Drivers License" expired={true} filesize={1.84} />
+                            <VehicleDocumentComponent title="Commercial Vehicle" filesize={1.84} />
+                            <VehicleDocumentComponent title="Vehicle Insurance" filesize={1.84} />
+                        </div>
+
+                    </div>
+
+                    <div className={`${styles.AddVehicleinfoBG} p-3 mt-5 d-flex w-100 align-items-center`}>
+                        <input type="checkbox" />
+                        <div className="ms-3">
+                            <span className="fw-800">Unlisted:</span>
+                            <span className="ms-2">Mark vehicle as unlisted if this vehicle is out of commission or requires service</span>
+                        </div>
+                    </div>
+
+                    <div className={`mt-5 w-100 d-flex justify-content-end`}>
+                        <Button click={() => { hideModal?.() }} label='Close' textColor='red' type={ButtonType.SECONDARY} />
                     </div>
                 </div>
             }
