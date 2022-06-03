@@ -26,7 +26,7 @@ const Delivery = () => {
                         <section className={`w-100 my-3 ${selectedTab === 'pickup' ? 'd-block' : 'd-none'}`}>
                             <div className={`px-5 d-flex flex-column`}>
                                 <span className={`fw-800 text-15 mt-5`}>Delivery (Pick-up)</span>
-                                <span className={`fw-400 text-11 w-60 mt-2`}>These order have been purchased and a driver is on their way to pick up from your warehouse location, please  package and label the order while waiting.</span>
+                                <span className={`fw-400 text-11 w-60 mt-2`}>These order have been purchased and a driver is on their way to pick up from your warehous,  please  package and label the order(s) while waiting for the driver.</span>
                             </div>
                             <div className={`px-5 mt-4 w-100 d-flex align-items-center justify-content-between`}>
                                 <div className={`d-flex align-items-center`}>

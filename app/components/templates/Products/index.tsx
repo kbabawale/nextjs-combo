@@ -147,7 +147,7 @@ const Products = () => {
                             <div className={`px-5 d-flex flex-column`}>
                                 <Alert title='Low Inventory' label='You have 3 products with less than 5 quantities available' type={AlertType.DANGER} link={productlink} />
                                 <span className={`fw-800 text-15 mt-3`}>All Products</span>
-                                <span className={`fw-400 text-11 w-60 mt-2`}>These order have been purchased and a driver is on their way to pick up from your warehouse location, please  package and label the order while waiting.</span>
+                                <span className={`fw-400 text-11 w-60 mt-2`}>All live and unpublished Product SKUs on StoreDash </span>
 
                             </div>
                             <div className={`px-5 mt-4 w-100 d-flex align-items-center justify-content-between`}>
@@ -175,7 +175,7 @@ const Products = () => {
                             <div className={`px-5 d-flex flex-column`}>
                                 <Alert title='Low Inventory' label='You have 3 products with less than 5 quantities available' type={AlertType.DANGER} link={productlink} />
                                 <span className={`fw-800 text-15 mt-3`}>Online Products</span>
-                                <span className={`fw-400 text-11 w-60 mt-2`}>These order have been purchased and a driver is on their way to pick up from your warehouse location, please  package and label the order while waiting.</span>
+                                <span className={`fw-400 text-11 w-60 mt-2`}>All Live product SKUs on Storedash, that are available to be ordered.</span>
 
                             </div>
                             <div className={`px-5 mt-4 w-100 d-flex align-items-center justify-content-between`}>
@@ -199,7 +199,7 @@ const Products = () => {
                             <div className={`px-5 d-flex flex-column`}>
                                 <Alert title='Low Inventory' label='You have 3 products with less than 5 quantities available' type={AlertType.DANGER} link={productlink} />
                                 <span className={`fw-800 text-15 mt-3`}>Unpublished Products</span>
-                                <span className={`fw-400 text-11 w-60 mt-2`}>These order have been purchased and a driver is on their way to pick up from your warehouse location, please  package and label the order while waiting.</span>
+                                <span className={`fw-400 text-11 w-60 mt-2`}>These are unpublished products on StoreDash that are unavailable to be ordered. All products with low inventory will also be unpublished.</span>
 
                             </div>
                             <div className={`px-5 mt-4 w-100 d-flex align-items-center justify-content-between`}>
