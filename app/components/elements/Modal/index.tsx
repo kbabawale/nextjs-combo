@@ -555,6 +555,94 @@ const Modal = ({ modalIsOpen, type, hideModal, toggleModalView, afterOpenModal, 
                     </div>
                 </div>
             }
+            {
+                type === ModalType.SETTINGSCHANGENAME &&
+                <div className={`d-flex flex-column align-items-center px-3 ${styles.overflow}`}>
+                    <span className={`align-self-start fw-700 text-13`}>Change Name</span>
+                    <span className={`align-self-start mt-1 color-gray-500`}>Enter your full name</span>
+
+                    <div className={`w-100 mt-3 d-flex flex-column`}>
+                        <ControlInput placeholder='Name' wide={true} />
+                    </div>
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <div className={`flex-fill`}>&nbsp;</div>
+                        <div className={`w-30 d-flex justify-content-between`}>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Update' type={ButtonType.PRIMARY} />
+                            <span className='mx-1'></span>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Close' textColor='red' type={ButtonType.SECONDARY} />
+                        </div>
+
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.SETTINGSCHANGEEMAIL &&
+                <div className={`d-flex flex-column align-items-center px-3 ${styles.overflow}`}>
+                    <span className={`align-self-start fw-700 text-13`}>Change Email</span>
+                    <span className={`align-self-start mt-1 color-gray-500`}>Only use a work/company email, you’ll receieve a validation mail to your new email address. Click the "Confirm email" button to complete the change.</span>
+
+                    <div className={`w-100 mt-3 d-flex flex-column`}>
+                        <ControlInput type='email' placeholder='New email' wide={true} />
+                        <ControlInput type='password' placeholder='Enter your Storedash password' wide={true} />
+                        <span className={`color-safety-blue hover link`}>Forgot Password?</span>
+                    </div>
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <div className={`flex-fill`}>&nbsp;</div>
+                        <div className={`w-30 d-flex justify-content-between`}>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Update' type={ButtonType.PRIMARY} />
+                            <span className='mx-1'></span>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Close' textColor='red' type={ButtonType.SECONDARY} />
+                        </div>
+
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.SETTINGSCHANGEPASSWORD &&
+                <div className={`d-flex flex-column align-items-center px-3 ${styles.overflow}`}>
+                    <span className={`align-self-start fw-700 text-13`}>Change Password</span>
+                    <span className={`align-self-start mt-1 color-gray-500`}>Choose a strong password with a minimum of 8 characters, passwords are case sensitive  </span>
+
+                    <div className={`w-100 mt-3 d-flex flex-column`}>
+                        <ControlInput type='password' placeholder='Current password' wide={true} />
+                        <ControlInput type='password' placeholder='New password' wide={true} />
+                        <ControlInput type='password' placeholder='Confirm password' wide={true} />
+                        <span className={`color-safety-blue hover link`}>Forgot Password?</span>
+                    </div>
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <div className={`flex-fill`}>&nbsp;</div>
+                        <div className={`w-30 d-flex justify-content-between`}>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Update' type={ButtonType.PRIMARY} />
+                            <span className='mx-1'></span>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Close' textColor='red' type={ButtonType.SECONDARY} />
+                        </div>
+
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.SETTINGSCHANGE2FA &&
+                <div className={`d-flex flex-column align-items-center px-3 ${styles.overflow}`}>
+                    <span className={`align-self-start fw-700 text-13`}>Two-factor authentication</span>
+                    <span className={`align-self-start mt-1 color-gray-500`}>Two-factor authentication (2FA) ensures an additional layer of security by requiring a 4-digit PIN to authorize logins. follow the setup to get started</span>
+
+                    <div className={`w-100 mt-3 d-flex flex-column`}>
+                        <Alert title='' label='SMS charges may apply depending on your network carrier ' type={AlertType.WARNING} />
+                        <ControlInput type='text' placeholder='Enter phone number' wide={true} />
+                        <ControlInput type='password' placeholder='Enter your StoreDash password' wide={true} />
+                        <span className={`color-safety-blue hover link`}>Forgot Password?</span>
+                    </div>
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <div className={`flex-fill`}>&nbsp;</div>
+                        <div className={`w-30 d-flex justify-content-between`}>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Enable' type={ButtonType.PRIMARY} />
+                            <span className='mx-1'></span>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Close' textColor='red' type={ButtonType.SECONDARY} />
+                        </div>
+
+                    </div>
+                </div>
+            }
 
 
         </ReactModal>

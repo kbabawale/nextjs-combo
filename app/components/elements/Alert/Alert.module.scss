@@ -7,10 +7,19 @@
   background: rgba(210, 225, 34, 0.09);
   height: 3rem;
 }
+.infobody_warning {
+  background: #FDFED1;
+  height: 3rem;
+}
 .side {
   height: 100%;
   width: 5px;
   background: rgba(255, 0, 0, 1);
+}
+.side_warning {
+  height: 100%;
+  width: 5px;
+  background: #7AF44F;
 }
 .farright {
   margin-left: auto;
