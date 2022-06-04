@@ -11,7 +11,7 @@ import ControlTextArea from '../ControlTextArea';
 import UploadControl from '../UploadControl';
 import styles from './index.module.scss';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClose, faCloudDownload, faCloudDownloadAlt, faExclamationTriangle, faFileAlt } from '@fortawesome/free-solid-svg-icons'
+import { faClose, faCloudDownload, faCloudDownloadAlt, faExclamationTriangle, faFileAlt, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import Alert from '../Alert/Alert';
 import { AlertType } from '../../../model/AlertType';
 import { Carousel } from 'react-bootstrap';
@@ -638,6 +638,66 @@ const Modal = ({ modalIsOpen, type, hideModal, toggleModalView, afterOpenModal, 
                             <Button click={() => { hideModal?.() }} wide={true} label='Enable' type={ButtonType.PRIMARY} />
                             <span className='mx-1'></span>
                             <Button click={() => { hideModal?.() }} wide={true} label='Close' textColor='red' type={ButtonType.SECONDARY} />
+                        </div>
+
+                    </div>
+                </div>
+            }
+            {
+                type === ModalType.ADDSTAFFMEMBER &&
+                <div className={`d-flex flex-column align-items-center px-3 ${styles.overflow}`}>
+                    <span className={`align-self-start fw-700 text-13`}>Add staff info</span>
+                    <span className={`align-self-start mt-1 color-gray-500`}>You can update your staff information </span>
+
+                    <div className={`w-100 mt-3 d-flex flex-column`}>
+                        <div className={`w-20 mt-3 d-flex flex-column align-items-center`}>
+                            <div className={`${styles.staffprofile}`}>
+                                <FontAwesomeIcon color="#6B7280" size='lg' icon={faUserPlus} />
+                            </div>
+                            <span className={`color-safety-blue mt-2 fw-500 text-09 hover link`}>Add photo</span>
+
+                        </div>
+                        <div className={`d-flex flex-column mt-5`}>
+                            <span className={`fw-700 text-09`}>Name</span>
+                            <div className={`w-100 d-flex align-items-center`}>
+                                <ControlInput type='text' placeholder='First name' wide={true} />
+                                <span className='mx-2'>&nbsp;</span>
+                                <ControlInput type='text' placeholder='Last name' wide={true} />
+                            </div>
+                        </div>
+                        <div className={`d-flex flex-column mt-5`}>
+                            <span className={`fw-700 text-09`}>Email</span>
+                            <div className={`w-100 d-flex align-items-center`}>
+                                <ControlInput type='text' placeholder='staffname@ company.com' wide={true} />
+                            </div>
+                        </div>
+                        <div className={`d-flex flex-column mt-5`}>
+                            <span className={`fw-700 text-09`}>Phone number</span>
+                            <div className={`w-100 d-flex align-items-center`}>
+                                <ControlInput type='text' placeholder='Enter phone number' wide={true} />
+
+                            </div>
+                        </div>
+                        <div className={`d-flex flex-column mt-5`}>
+                            <span className={`fw-700 text-09`}>Role</span>
+                            <div className={`w-100 d-flex align-items-center`}>
+                                <ControlSelect options={dropdownOptions.options} wide={true} />
+                            </div>
+                        </div>
+                        <div className={`d-flex flex-column mt-5`}>
+                            <span className={`fw-700 text-09`}>ID number</span>
+                            <div className={`w-100 d-flex align-items-center`}>
+                                <ControlInput type='text' placeholder="Enter staff's identity number" wide={true} />
+
+                            </div>
+                        </div>
+                    </div>
+                    <div className={`mt-5 w-100 d-flex justify-content-between`}>
+                        <div className={`flex-fill`}>&nbsp;</div>
+                        <div className={`w-30 d-flex justify-content-between`}>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Save' type={ButtonType.PRIMARY} />
+                            <span className='mx-1'></span>
+                            <Button click={() => { hideModal?.() }} wide={true} label='Cancel' textColor='red' type={ButtonType.SECONDARY} />
                         </div>
 
                     </div>

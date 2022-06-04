@@ -13,7 +13,7 @@ import { visuallyHidden } from '@mui/utils';
 import { StaffData, HeadCell, PaymentType } from "../../../model/dataTable";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faClone, faEllipsis, faExclamationTriangle } from '@fortawesome/free-solid-svg-icons'
+import { faClone, faEllipsis, faUserPlus } from '@fortawesome/free-solid-svg-icons'
 import Modal from "../Modal";
 import { ModalPosition, ModalType } from "../../../model/Modal";
 import { Checkbox } from "@mui/material";
@@ -193,7 +193,7 @@ export default function StaffDataTable() {
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(10);
-    const [currentModalType, setCurrentModalType] = useState<ModalType>(ModalType.ORDERDETAILS);
+    const [currentModalType, setCurrentModalType] = useState<ModalType>(ModalType.ADDSTAFFMEMBER);
 
     let [isOpen, setIsOpen] = useState(false);
     let [modalPosition, setModalPosition] = useState(ModalPosition.CENTER);
@@ -206,15 +206,6 @@ export default function StaffDataTable() {
         setCurrentModalType(type);
     }
 
-    const toggleModalView = () => {
-        if (currentModalType === ModalType.CONFIRMPICKUP) {
-            setCurrentModalType(ModalType.ORDERDETAILS);
-        } else {
-            setCurrentModalType(ModalType.CONFIRMPICKUP);
-        }
-
-    }
-
 
     const afterOpenModal = () => {
         document.body.style.overflow = 'hidden';
@@ -225,7 +216,6 @@ export default function StaffDataTable() {
 
     const onRequestCloseFn = () => {
         toggleModal();
-        toggleModalView();
     }
 
     const handleRequestSort = (
@@ -285,7 +275,7 @@ export default function StaffDataTable() {
     return (
 
         <Box sx={{ width: '100%' }}>
-            <Modal hideModal={() => { toggleModal() }} toggleModalView={toggleModalView} type={currentModalType} position={modalPosition} onRequestClose={onRequestCloseFn} onAfterClose={afterCloseModal} afterOpenModal={afterOpenModal} modalIsOpen={isOpen} />
+            <Modal hideModal={() => { toggleModal() }} type={currentModalType} position={modalPosition} onRequestClose={onRequestCloseFn} onAfterClose={afterCloseModal} afterOpenModal={afterOpenModal} modalIsOpen={isOpen} />
             <Paper sx={{ width: '100%', mb: 2 }}>
 
                 <TableContainer>
