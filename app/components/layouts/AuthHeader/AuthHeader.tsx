@@ -5,6 +5,8 @@ import mic from '../../../../public/mic.svg';
 import ellipsis from '../../../../public/ellipsis.svg';
 import notification from '../../../../public/notification.svg';
 import styles from './AuthHeader.module.scss';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faSearch } from '@fortawesome/free-solid-svg-icons';
 
 const AuthHeader = () => {
     return (
@@ -14,6 +16,10 @@ const AuthHeader = () => {
                 <Link href="/">
                     <a className={`${styles.nolinkhover} ms-2 text-decoration-none color-black fw-700 text-11`}>StoreDash Manager</a>
                 </Link>
+            </div>
+            <div className={`${styles.search} flex-fill mx-5 py-1 px-4`}>
+                <FontAwesomeIcon color='#9CA3AF' icon={faSearch} />
+                <input type="search" placeholder='Search driver names, pick-up codes or order numbers' />
             </div>
             <div className={`d-flex align-items-center`}>
                 <Link className={`linkB`} href="/">

@@ -26,3 +26,17 @@
 .linkB {
   background: #f9fafb;
 }
+
+.search{
+  border:1px solid #9CA3AF;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+
+  input{
+    flex:1;
+    margin-left: 1rem;
+    border:none;
+    outline:none;
+  }
+}
