@@ -6,6 +6,7 @@ import logo from '../../../../public/logo/logo.svg';
 import Input from "../../elements/Input/Input";
 import Button from "../../elements/Button/Button";
 import { ButtonType } from "../../../model/buttonType";
+import { UtilFunction } from "../../../util/functions";
 
 const Login = () => {
     return (
@@ -20,7 +21,7 @@ const Login = () => {
 
                     <Input placeholder="Enter email" />
                     <Input type="password" placeholder="Enter Password" />
-                    <Button textColor="white" label="Log in" type={ButtonType.PRIMARY} />
+                    <Button click={() => { UtilFunction.navigate('/dashboard') }} textColor="white" label="Log in" type={ButtonType.PRIMARY} />
 
                     <Link href="/auth/reset-password"><a className="mt-2">Forgot Password</a></Link>
                 </form>

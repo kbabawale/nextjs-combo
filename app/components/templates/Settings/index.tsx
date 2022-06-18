@@ -12,6 +12,7 @@ import Alert from '../../elements/Alert/Alert';
 import { AlertType } from '../../../model/AlertType';
 import { ModalPosition, ModalType } from '../../../model/Modal';
 import Modal from '../../elements/Modal';
+import { UtilFunction } from '../../../util/functions';
 
 
 
@@ -186,7 +187,7 @@ const Settings = () => {
                                                 <FontAwesomeIcon className='ms-2' color='#276EF1' icon={faArrowUpRightFromSquare} />
                                             </div>
                                             <div className={`mt-3 d-flex align-items-center`}>
-                                                <span className={`error hover link`}>Sign out of all devices</span>
+                                                <span onClick={() => { UtilFunction.navigate('/') }} className={`error hover link`}>Sign out of all devices</span>
                                                 <FontAwesomeIcon className='ms-2' color='#E62121' icon={faArrowRightFromBracket} />
                                             </div>
                                         </div>

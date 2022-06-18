@@ -39,6 +39,15 @@ const Sitemap: NextPage = () => {
                     <li>
                         <Link href="/staff" className={`fw-400 text-11 link hover`}><a>Staff</a></Link>
                     </li>
+                    <li>
+                        <Link href="/vehicles" className={`fw-400 text-11 link hover`}><a>Vehicles</a></Link>
+                    </li>
+                    <li>
+                        <Link href="/documents" className={`fw-400 text-11 link hover`}><a>Documents</a></Link>
+                    </li>
+                    <li>
+                        <Link href="/settings" className={`fw-400 text-11 link hover`}><a>Settings</a></Link>
+                    </li>
                 </ol>
             </div>
         </div>

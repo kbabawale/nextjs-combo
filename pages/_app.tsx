@@ -17,18 +17,22 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     isAuthRoute() ? (
-      <Provider store={store}>
-        <AuthLayout>
-          <Component {...pageProps} />
-        </AuthLayout>
-      </Provider>
+      <>
+        <Provider store={store}>
+          <AuthLayout>
+            <Component {...pageProps} />
+          </AuthLayout>
+        </Provider>
+      </>
     ) :
       (
-        <Provider store={store}>
-          <DefaultLayout>
-            <Component {...pageProps} />
-          </DefaultLayout>
-        </Provider>
+        <>
+          <Provider store={store}>
+            <DefaultLayout>
+              <Component {...pageProps} />
+            </DefaultLayout>
+          </Provider>
+        </>
       )
 
   )
