@@ -1,12 +1,15 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 import Password from '../../app/components/templates/ResetPassword';
+import { memo } from 'react';
 
-const ResetPasswordPage: NextPage = () => {
-    return (
+const ResetPasswordPage: NextPage = memo(() => {
+  return (
+    <Password
+      heading="Reset Password"
+      subHeading="Enter email to reset your password"
+      buttonText="Send reset link"
+    />
+  );
+});
 
-        <Password heading='Reset Password' subHeading='Enter email to reset your password' buttonText='Send reset link' />
-
-    )
-}
-
-export default ResetPasswordPage
+export default ResetPasswordPage;

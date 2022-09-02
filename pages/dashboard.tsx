@@ -1,12 +1,9 @@
-import type { NextPage } from 'next'
+import type { NextPage } from 'next';
 import Dashboard from '../app/components/templates/Dashboard';
+import { memo } from 'react';
 
-const DashboardPage: NextPage = () => {
-    return (
+const DashboardPage: NextPage = memo(() => {
+  return <Dashboard />;
+});
 
-        <Dashboard />
-
-    )
-}
-
-export default DashboardPage
+export default DashboardPage;

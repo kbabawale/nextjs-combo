@@ -1,12 +1,9 @@
-import type { NextPage } from 'next'
-import Login from '../../app/components/templates/Login/Login'
+import type { NextPage } from 'next';
+import Login from '../../app/components/templates/Login/Login';
+import { memo } from 'react';
 
-const Home: NextPage = () => {
-    return (
+const Home: NextPage = memo(() => {
+  return <Login />;
+});
 
-        <Login />
-
-    )
-}
-
-export default Home
+export default Home;

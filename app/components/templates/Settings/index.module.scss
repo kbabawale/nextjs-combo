@@ -6,5 +6,8 @@
   width:100px;
   height:100px;
   border-radius: 50%;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  // background: url(https://phantom-marca.unidadeditorial.es/af79a6271c78d0c072a9300939878008/crop/0x0/2044x1150/resize/1320/f/jpg/assets/multimedia/imagenes/2022/07/19/16582496932879.png);
   background: #999;
 }
