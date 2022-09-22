@@ -122,7 +122,7 @@ const AuthHeader = memo(() => {
           <a
             className={`${styles.nolinkhover} ms-2 text-decoration-none color-black fw-700 text-11`}
           >
-            StoreDash Manager
+            Brand Manager
           </a>
         </Link>
       </div>

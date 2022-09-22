@@ -1,5 +1,3 @@
-import Footer from '../../layouts/Footer/Footer';
-import Header from '../../layouts/Header/Header';
 import Link from 'next/link';
 import Image from 'next/image';
 import logo from '../../../../public/logo/logo.svg';
@@ -49,8 +47,8 @@ const Password = memo<AppProps>((props) => {
       <main
         className={`mt-5 d-flex flex-column flex-fill justify-content-center align-items-center text-left`}
       >
-        <Image className="" src={logo} alt="Logo" />
-        <span className={`fw-600 text-12`}>Storedash</span>
+        <Image width={50} height={50} className="" src={logo} alt="Logo" />
+        <span className={`fw-600 text-12`}>Brand</span>
 
         <form className={`d-flex flex-column w-30 mx-auto`}>
           <span className={`mt-5 fw-800 color-black text-15`}>{heading}</span>

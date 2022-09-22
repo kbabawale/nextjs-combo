@@ -11,12 +11,12 @@ const Header = memo(() => {
       className={`w-100 px-5 py-3 d-flex align-items-center justify-content-between ${styles.header}`}
     >
       <div className="d-flex link align-items-center">
-        <Image src={logo} alt="Logo" />
+        <Image width={50} height={50} src={logo} alt="Logo" />
         <Link href="/">
           <a
             className={`${styles.nolinkhover} ms-2 text-decoration-none color-black fw-700 text-11`}
           >
-            StoreDash Manager
+            Brand Manager
           </a>
         </Link>
       </div>

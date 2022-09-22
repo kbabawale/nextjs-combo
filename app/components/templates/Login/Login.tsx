@@ -36,8 +36,14 @@ const Login = memo<PropsWithChildren<Object>>((props) => {
           <main
             className={`mt-5 d-flex flex-column flex-fill justify-content-center align-items-center text-left`}
           >
-            <Image className="" src={logo} alt="Logo" />
-            <span className={`fw-600 text-12`}>Storedash</span>
+            <Image
+              width={150}
+              height={150}
+              className=""
+              src={logo}
+              alt="Logo"
+            />
+            <span className={`fw-600 text-12`}>Brand</span>
             <form className={`d-flex flex-column w-30 mx-auto`}>
               <span className={`mt-5 fw-800 color-black text-15`}>Log in</span>
               <span className={`my-2 fw-400 text-11`}>

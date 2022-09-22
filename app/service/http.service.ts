@@ -6,7 +6,6 @@ import { UtilFunction } from '../util/functions';
 export interface IHttpService {
   get<T, U>(url: string): Promise<ResponseObj<T, U>>;
   post<T, U>(url: string, body: any): Promise<ResponseObj<T, U>>;
-  postExternal<T>(url: string, body: any): Promise<T>;
   put<T, U>(url: string, body: any): Promise<ResponseObj<T, U>>;
 }
 
@@ -61,39 +60,6 @@ export class HttpService implements IHttpService {
     return data;
   }
 
-  async postExternal<T>(url: string, body: any): Promise<T> {
-    let options: HttpOptions = {
-      headers: {
-        Accept: 'application/json',
-      },
-    };
-
-    axios.interceptors.response.use(undefined, (error: AxiosError) => {
-      // this.responseInterceptorExternal<T>(error);
-      // if (error.code?.toUpperCase() != 'ERR_NETWORK') {
-      //   if (error.response?.status == 401) {
-      //     UtilFunction.notification('Authentication Error', 'failure');
-      //   } else if (error.response?.status == 406) {
-      //     UtilFunction.notification('An Unexpected Error Occurred', 'failure');
-      //   } else {
-      //     let errorMessage = error.response?.data as ResponseObj<T>;
-      //     errorMessage.message.length > 50
-      //       ? UtilFunction.notification(
-      //           'Server Error. Please Try Again',
-      //           'failure'
-      //         )
-      //       : UtilFunction.notification(errorMessage.message, 'failure');
-      //   }
-      // } else {
-      //   UtilFunction.notification('Network Error', 'failure');
-      // }
-      console.log(error, 'Error from interceptor');
-    });
-
-    let { data } = await axios.post<T>(url, body, options);
-    return data;
-  }
-
   async get<T, U = any>(url: string): Promise<ResponseObj<T, U>> {
     let options: HttpOptions = {
       headers: {
@@ -132,7 +98,6 @@ export class HttpService implements IHttpService {
         return this.requestInterceptor(config);
       },
       (error) => {
-        console.error(error, 'Interceptor Error');
         UtilFunction.notification('An Error Occurred', 'failure');
       }
     );
@@ -164,26 +129,6 @@ export class HttpService implements IHttpService {
           'failure'
         );
         UtilFunction.navigate('/auth');
-      } else if (error.response?.status == 406) {
-        UtilFunction.notification('An Unexpected Error Occurred', 'failure');
-      } else {
-        let errorMessage = error.response?.data as ResponseObj<T>;
-        errorMessage.message.length > 50
-          ? UtilFunction.notification(
-              'Server Error. Please Try Again',
-              'failure'
-            )
-          : UtilFunction.notification(errorMessage.message, 'failure');
-      }
-    } else {
-      UtilFunction.notification('Network Error', 'failure');
-    }
-  }
-
-  private responseInterceptorExternal<T>(error: AxiosError) {
-    if (error.code?.toUpperCase() != 'ERR_NETWORK') {
-      if (error.response?.status == 401) {
-        UtilFunction.notification('Authentication Error', 'failure');
       } else if (error.response?.status == 406) {
         UtilFunction.notification('An Unexpected Error Occurred', 'failure');
       } else {
